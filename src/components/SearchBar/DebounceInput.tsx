@@ -43,7 +43,7 @@ const DebounceInput = ({
 				console.error(error);
 			}
 		},
-		[changeState],
+		[changeState, apiKey],
 	);
 
 	const handleChange = (value: string) => {
