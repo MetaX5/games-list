@@ -34,7 +34,7 @@ interface GamesPageProps {
 	apiKey?: string;
 }
 
-export default async function gamesPage({
+export default async function getGamesPage({
 	page = "1",
 	apiKey = process.env.RAWG_API_KEY,
 }: GamesPageProps): Promise<GamesPageResults | undefined> {

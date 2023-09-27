@@ -1,6 +1,6 @@
 import { GameData } from "@/app/game/[slug]/page";
 
-export default async function singleGameBySlug(slug: string) {
+export default async function getSingleGameBySlug(slug: string) {
 	const res = await fetch(
 		`https://api.rawg.io/api/games/${slug}?key=${process.env.RAWG_API_KEY}`,
 		{ next: { revalidate: 3600 } },

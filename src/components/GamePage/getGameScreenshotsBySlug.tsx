@@ -1,6 +1,6 @@
 import { screenshots } from "./GameGallery";
 
-export default async function gameScreenshotsBySlug(
+export default async function getGameScreenshotsBySlug(
 	slug: string,
 	apiKey: string,
 ) {

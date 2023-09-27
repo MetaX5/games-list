@@ -1,6 +1,6 @@
 import changeImageUrl from "@/lib/utils/changeImageUrl";
-import singleGameBySlug from "@/components/GamePage/singleGameBySlug";
-import gameScreenshotsBySlug from "@/components/GamePage/gameScreenshotsBySlug";
+import getSingleGameBySlug from "@/components/GamePage/getSingleGameBySlug";
+import getGameScreenshotsBySlug from "@/components/GamePage/getGameScreenshotsBySlug";
 import PlatformIcons from "@/components/GamePlatforms/PlatformIconsForGame";
 import GameGallery, { screenshots } from "@/components/GamePage/GameGallery";
 import GameRequirements, {
@@ -31,7 +31,7 @@ export async function generateMetadata(
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
 	// fetch data
-	const data: Data = (await singleGameBySlug(params.slug)) as Data;
+	const data: Data = (await getSingleGameBySlug(params.slug)) as Data;
 
 	// optionally access and extend (rather than replace) parent metadata
 	const previousImages = (await parent).openGraph?.images ?? [];
@@ -65,8 +65,8 @@ export type GameData = AdditionalInfoProps & {
 
 export default async function Game({ params }: Props) {
 	const [data, screenshots]: [GameData, screenshots] = await Promise.all([
-		singleGameBySlug(params.slug),
-		gameScreenshotsBySlug(
+		getSingleGameBySlug(params.slug),
+		getGameScreenshotsBySlug(
 			params.slug,
 			process.env.NEXT_PUBLIC_RAWG_API_KEY ?? "",
 		),

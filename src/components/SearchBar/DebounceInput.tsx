@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { SearchBarState } from "./SearchBar";
 import useDebounce from "@/app/hooks/useDebounce";
-import { results } from "./SearchResultsList";
+import { Results } from "./SearchResultsList";
 
 interface DebounceInputProps {
 	count?: number;
@@ -11,7 +11,7 @@ interface DebounceInputProps {
 }
 
 interface Json {
-	results: results[];
+	results: Results[];
 }
 
 const DebounceInput = ({
@@ -34,7 +34,7 @@ const DebounceInput = ({
 					)}`,
 				);
 				const json: Json = (await response.json()) as Json;
-				const results: results[] = json.results;
+				const results: Results[] = json.results;
 				changeState({
 					input: value,
 					results,

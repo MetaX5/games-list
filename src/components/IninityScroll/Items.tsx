@@ -7,7 +7,7 @@ import Link from "next/link";
 import React, { useState, useRef } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import Placeholder from "../ui/custom/Placeholder";
-import { ResultsArr } from "../gamesPage";
+import { ResultsArr } from "../getGamesPage";
 import Metascore from "../Metascore";
 
 interface ItemsProps {
