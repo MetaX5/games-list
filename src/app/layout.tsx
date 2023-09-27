@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import getGameSinglePageQuery from "@/components/gamesPage";
+import gamesPage from "@/components/gamesPage";
 import { use } from "react";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Header from "@/components/Header";
@@ -27,7 +27,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	const fetchQuery = async () => {
-		const data = await getGameSinglePageQuery({
+		const data = await gamesPage({
 			apiKey: process.env.RAWG_API_KEY,
 		});
 		return data;
