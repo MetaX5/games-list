@@ -19,21 +19,20 @@ import "swiper/css/pagination";
 import { useRef } from "react";
 
 export interface screenshots {
-	results: result[];
+	results: Result[];
 }
 
-interface result {
+interface Result {
 	id: string;
 	image: string;
 }
 
-export default function GameGallery({
-	slug,
-	queryResult,
-}: {
+interface GameGalleryProps {
 	slug: string;
 	queryResult: screenshots;
-}) {
+}
+
+export default function GameGallery({ slug, queryResult }: GameGalleryProps) {
 	const swiperRef = useRef<SwiperRef>();
 	const { results: screenshots } = queryResult;
 
@@ -93,7 +92,7 @@ export default function GameGallery({
 		));
 
 	return (
-		<div className="bg-transparent relative z-10 text-neutral-200">
+		<div className="relative z-10 bg-transparent text-neutral-200">
 			<Swiper {...(swiperParams as SwiperProps)}>{renderSlides()}</Swiper>
 		</div>
 	);

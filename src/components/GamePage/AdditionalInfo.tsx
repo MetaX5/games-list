@@ -1,5 +1,5 @@
 import Metascore from "../Metascore";
-import { platforms } from "./GameRequirements";
+import { Platforms } from "./GameRequirements";
 
 interface Arr {
 	id: number;
@@ -7,7 +7,7 @@ interface Arr {
 }
 
 export interface AdditionalInfoProps {
-	platforms?: platforms[];
+	platforms?: Platforms[];
 	genres?: Arr[];
 	released?: string;
 	developers?: Arr[];
@@ -16,7 +16,7 @@ export interface AdditionalInfoProps {
 	esrb_rating?: {
 		name: string | null;
 	};
-	metacritic?: number;
+	metacritic: number | null;
 }
 
 const AdditionalInfo = ({ data }: { data: AdditionalInfoProps }) => {

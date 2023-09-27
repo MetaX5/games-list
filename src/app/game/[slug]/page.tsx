@@ -1,10 +1,10 @@
 import changeImageUrl from "@/lib/utils/changeImageUrl";
-import SingleGameBySlug from "@/components/GamePage/SingleGameBySlug";
+import singleGameBySlug from "@/components/GamePage/singleGameBySlug";
 import PlatformIcons from "@/components/GamePlatforms/PlatformIconsForGame";
 import GameGallery, { screenshots } from "@/components/GamePage/GameGallery";
-import GameScreenshotsBySlug from "@/components/GamePage/GameScreenshotsBySlug";
+import gameScreenshotsBySlug from "@/components/GamePage/gameScreenshotsBySlug";
 import GameRequirements, {
-	platforms,
+	Platforms,
 } from "@/components/GamePage/GameRequirements";
 import { Suspense } from "react";
 import Loader from "@/components/ui/custom/Loader";
@@ -21,7 +21,7 @@ interface Props {
 	params: { slug: string };
 }
 
-interface data {
+interface Data {
 	name: string;
 	background_image?: string;
 }
@@ -31,7 +31,7 @@ export async function generateMetadata(
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
 	// fetch data
-	const data: data = (await SingleGameBySlug(params.slug)) as data;
+	const data: Data = (await singleGameBySlug(params.slug)) as Data;
 
 	// optionally access and extend (rather than replace) parent metadata
 	const previousImages = (await parent).openGraph?.images ?? [];
@@ -44,13 +44,7 @@ export async function generateMetadata(
 	};
 }
 
-interface color {
-	color: string;
-}
-
-type ratingColors = Record<string, color>;
-
-export interface rating {
+export interface Rating {
 	id: number;
 	title: string;
 	percent: number;
@@ -58,21 +52,21 @@ export interface rating {
 	color: string;
 }
 
-export type gameData = AdditionalInfoProps & {
+export type GameData = AdditionalInfoProps & {
 	name: string;
 	description_raw: string;
 	background_image: string;
 	released: string;
-	parent_platforms: platforms[];
-	ratings: rating[];
-	platforms: platforms[];
+	parent_platforms: Platforms[];
+	ratings: Rating[];
+	platforms: Platforms[];
 	detail?: string;
 };
 
 export default async function Game({ params }: Props) {
-	const [data, screenshots]: [gameData, screenshots] = await Promise.all([
-		SingleGameBySlug(params.slug),
-		GameScreenshotsBySlug(
+	const [data, screenshots]: [GameData, screenshots] = await Promise.all([
+		singleGameBySlug(params.slug),
+		gameScreenshotsBySlug(
 			params.slug,
 			process.env.NEXT_PUBLIC_RAWG_API_KEY ?? "",
 		),
@@ -81,29 +75,6 @@ export default async function Game({ params }: Props) {
 	if (data.detail) {
 		return <NotFound />;
 	}
-
-	const ratingColors: ratingColors = {
-		exceptional: {
-			color: "bg-green-500",
-		},
-		recommended: {
-			color: "bg-blue-500",
-		},
-		meh: {
-			color: "bg-orange-500",
-		},
-		skip: {
-			color: "bg-red-500",
-		},
-	};
-
-	const ratings: rating[] = data.ratings.map((rating) => ({
-		id: rating.id,
-		title: rating.title,
-		percent: rating.percent,
-		count: rating.count,
-		color: ratingColors[rating.title].color,
-	}));
 
 	const dateObj = new Date(data.released);
 	const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(
@@ -155,7 +126,7 @@ export default async function Game({ params }: Props) {
 					<GameRequirements data={data} />
 				</div>
 				<div className="my-12 flex w-full flex-col items-center justify-around md:w-3/6 lg:my-0">
-					<Ratings ratings={ratings} />
+					<Ratings ratings={data.ratings} />
 				</div>
 			</div>
 			<div className="my-12 flex flex-wrap justify-between">

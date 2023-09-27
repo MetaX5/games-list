@@ -1,14 +1,12 @@
 import { cn } from "@/lib/utils";
 
-const Metascore = ({
-	metacritic,
-	size = 40,
-	className,
-}: {
-	metacritic: number | undefined;
+interface MetascoreProps {
+	metacritic?: number | null;
 	size?: number;
 	className?: string;
-}) => {
+}
+
+const Metascore = ({ metacritic, size = 40, className }: MetascoreProps) => {
 	const metascoreClass = () => {
 		if (!metacritic) return;
 		if (metacritic >= 85) {

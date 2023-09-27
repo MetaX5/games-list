@@ -1,10 +1,10 @@
-import GamesPage from "./GamesPage";
+import gamesPage from "./gamesPage";
 import Items from "./IninityScroll/Items";
 
 async function fetchItems(page = "1") {
 	"use server";
 
-	const data = await GamesPage({ page });
+	const data = await gamesPage({ page });
 	return data?.results;
 }
 

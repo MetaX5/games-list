@@ -1,9 +1,9 @@
 import { screenshots } from "./GameGallery";
 
-export default async function GameScreenshotsBySlug(
+export default async function gameScreenshotsBySlug(
 	slug: string,
 	apiKey: string,
-): Promise<screenshots> {
+) {
 	const res = await fetch(
 		`https://api.rawg.io/api/games/${slug}/screenshots?key=${apiKey}`,
 		{ next: { revalidate: 3600 } },

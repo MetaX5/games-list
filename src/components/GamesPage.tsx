@@ -1,7 +1,7 @@
-import { rating } from "@/app/game/[slug]/page";
-import { platforms } from "./GamePage/GameRequirements";
+import { Rating } from "@/app/game/[slug]/page";
+import { Platforms } from "./GamePage/GameRequirements";
 
-interface parent_platforms {
+interface Parent_platforms {
 	platform: {
 		id: number;
 		name: string;
@@ -9,33 +9,35 @@ interface parent_platforms {
 	};
 }
 
-export interface resultsArr {
+export interface ResultsArr {
 	id: number;
 	name: string;
 	slug: string;
 	background_image: string;
 	released: string;
 	rating: number;
-	ratings: rating[];
-	platforms: platforms[];
-	parent_platforms: parent_platforms[];
-	metacritic?: number;
+	ratings: Rating[];
+	platforms: Platforms[];
+	parent_platforms: Parent_platforms[];
+	metacritic: number | null;
 }
 
 export interface GamesPageResults {
 	count: number;
 	next: string;
 	previous: string | null;
-	results: resultsArr[];
+	results: ResultsArr[];
 }
 
-export default async function GamesPage({
-	page = "1",
-	apiKey = process.env.RAWG_API_KEY,
-}: {
+interface GamesPageProps {
 	page?: string;
 	apiKey?: string;
-}): Promise<GamesPageResults | undefined> {
+}
+
+export default async function gamesPage({
+	page = "1",
+	apiKey = process.env.RAWG_API_KEY,
+}: GamesPageProps): Promise<GamesPageResults | undefined> {
 	try {
 		const res = await fetch(
 			`https://api.rawg.io/api/games?key=${apiKey}&page=${page}`,

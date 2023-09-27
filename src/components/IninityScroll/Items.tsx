@@ -7,16 +7,15 @@ import Link from "next/link";
 import React, { useState, useRef } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import Placeholder from "../ui/custom/Placeholder";
-import { resultsArr } from "../GamesPage";
+import { ResultsArr } from "../gamesPage";
 import Metascore from "../Metascore";
 
-export default function Items({
-	results,
-	fetchItems,
-}: {
-	results?: resultsArr[];
-	fetchItems: (page?: string) => Promise<resultsArr[] | undefined>;
-}) {
+interface ItemsProps {
+	results?: ResultsArr[];
+	fetchItems: (page?: string) => Promise<ResultsArr[] | undefined>;
+}
+
+export default function Items({ results, fetchItems }: ItemsProps) {
 	const fetching = useRef(false);
 	const [pages, setPages] = useState([results]);
 	const items = pages.flatMap((page) => page);

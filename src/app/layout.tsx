@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import getGameSinglePageQuery from "@/components/GamesPage";
+import getGameSinglePageQuery from "@/components/gamesPage";
 import { use } from "react";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Header from "@/components/Header";
@@ -40,7 +40,7 @@ export default function RootLayout({
 			<body
 				className={twMerge(
 					inter.className,
-					"bg-slate-50 dark:bg-slate-950 max-w-[1920px] mx-auto",
+					"mx-auto max-w-[1920px] bg-slate-50 dark:bg-slate-950",
 				)}
 			>
 				<ThemeProvider attribute="class" defaultTheme="dark">

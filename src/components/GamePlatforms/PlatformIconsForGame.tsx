@@ -9,18 +9,18 @@ import {
 	Xbox,
 } from "@/components/GamePlatforms/PlatformIcons";
 
-export interface platforms {
+export interface Platforms {
 	platform: {
 		name: string;
 	};
 }
 
-interface props {
-	parent_platforms?: platforms[];
+interface Props {
+	parent_platforms?: Platforms[];
 	size?: number;
 }
 
-export default function GetPlatformIconsForGame(props: props) {
+export default function GetPlatformIconsForGame(props: Props) {
 	const icons: JSX.Element[] = [];
 	const { parent_platforms, size = 16 } = props;
 

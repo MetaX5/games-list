@@ -6,11 +6,11 @@ import {
 	AccordionTrigger,
 } from "../ui/accordion";
 
-interface data {
-	platforms: platforms[];
+interface Data {
+	platforms: Platforms[];
 }
 
-export interface platforms {
+export interface Platforms {
 	platform: {
 		name: string;
 		id: number;
@@ -21,7 +21,7 @@ export interface platforms {
 	};
 }
 
-export default function GameRequirements({ data }: { data: data }) {
+export default function GameRequirements({ data }: { data: Data }) {
 	const platformsArr = data.platforms;
 	return (
 		<>
@@ -29,7 +29,7 @@ export default function GameRequirements({ data }: { data: data }) {
 				<AccordionItem value="pc">
 					<AccordionTrigger>PC Requirements</AccordionTrigger>
 					<AccordionContent>
-						{platformsArr.map((platforms: platforms) => {
+						{platformsArr.map((platforms: Platforms) => {
 							if (platforms.platform.name === "PC") {
 								return (
 									<React.Fragment key={platforms.platform.id}>

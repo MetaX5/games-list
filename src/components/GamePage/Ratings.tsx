@@ -1,16 +1,39 @@
 "use client";
 
-import { rating } from "@/app/game/[slug]/page";
+import { Rating } from "@/app/game/[slug]/page";
 import { ProgressBar } from "../ui/custom/ProgressBar";
 
-interface Props {
-	ratings: rating[];
+interface Color {
+	color: string;
 }
 
-const Ratings = (props: Props) => {
-	const { ratings } = props;
+type RatingColors = Record<string, Color>;
 
-	const ratingsSorted = ratings.sort((a, b) => b.id - a.id);
+const Ratings = ({ ratings }: { ratings: Rating[] }) => {
+	const ratingColors: RatingColors = {
+		exceptional: {
+			color: "bg-green-500",
+		},
+		recommended: {
+			color: "bg-blue-500",
+		},
+		meh: {
+			color: "bg-orange-500",
+		},
+		skip: {
+			color: "bg-red-500",
+		},
+	};
+
+	const ratingsArr: Rating[] = ratings.map((rating) => ({
+		id: rating.id,
+		title: rating.title,
+		percent: rating.percent,
+		count: rating.count,
+		color: ratingColors[rating.title].color,
+	}));
+
+	const ratingsSorted = ratingsArr.sort((a, b) => b.id - a.id);
 
 	const ratingsArray = ratingsSorted.map((rating) => (
 		<div

@@ -1,11 +1,11 @@
-interface props {
+interface Props {
 	className?: string;
 	width?: number;
 	height?: number;
 	title: string;
 }
 
-export const Windows = (props: props) => {
+export const Windows = (props: Props) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@ export const Windows = (props: props) => {
 	);
 };
 
-export const Playstation = (props: props) => {
+export const Playstation = (props: Props) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@ export const Playstation = (props: props) => {
 	);
 };
 
-export const Xbox = (props: props) => {
+export const Xbox = (props: Props) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +62,7 @@ export const Xbox = (props: props) => {
 	);
 };
 
-export const Linux = (props: props) => {
+export const Linux = (props: Props) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +81,7 @@ export const Linux = (props: props) => {
 	);
 };
 
-export const Nintendo = (props: props) => {
+export const Nintendo = (props: Props) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +100,7 @@ export const Nintendo = (props: props) => {
 	);
 };
 
-export const Macos = (props: props) => {
+export const Macos = (props: Props) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +119,7 @@ export const Macos = (props: props) => {
 	);
 };
 
-export const Ios = (props: props) => {
+export const Ios = (props: Props) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -138,7 +138,7 @@ export const Ios = (props: props) => {
 	);
 };
 
-export const Android = (props: props) => {
+export const Android = (props: Props) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

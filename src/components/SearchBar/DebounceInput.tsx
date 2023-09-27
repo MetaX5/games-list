@@ -10,7 +10,7 @@ interface DebounceInputProps {
 	apiKey: string;
 }
 
-interface json {
+interface Json {
 	results: results[];
 }
 
@@ -33,7 +33,7 @@ const DebounceInput = ({
 						value,
 					)}`,
 				);
-				const json: json = (await response.json()) as json;
+				const json: Json = (await response.json()) as Json;
 				const results: results[] = json.results;
 				changeState({
 					input: value,

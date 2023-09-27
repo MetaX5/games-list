@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { SearchResultsList, results } from "./SearchResultsList";
+import { SearchResultsList, Results } from "./SearchResultsList";
 import DebounceInput from "./DebounceInput";
 
 interface SearchBarProps {
@@ -12,7 +12,7 @@ interface SearchBarProps {
 
 export interface SearchBarState {
 	input: string;
-	results?: results[];
+	results?: Results[];
 }
 
 export default function SearchBar({ apiKey, count }: SearchBarProps) {

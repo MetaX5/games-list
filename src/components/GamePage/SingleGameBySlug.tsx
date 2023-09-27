@@ -1,8 +1,6 @@
-import { gameData } from "@/app/game/[slug]/page";
+import { GameData } from "@/app/game/[slug]/page";
 
-export default async function SingleGameBySlug(
-	slug: string,
-): Promise<gameData> {
+export default async function singleGameBySlug(slug: string) {
 	const res = await fetch(
 		`https://api.rawg.io/api/games/${slug}?key=${process.env.RAWG_API_KEY}`,
 		{ next: { revalidate: 3600 } },
@@ -17,7 +15,7 @@ export default async function SingleGameBySlug(
 		console.error("Failed to fetch data");
 	}
 
-	const result: gameData = (await res.json()) as gameData;
+	const result: GameData = (await res.json()) as GameData;
 
 	return result;
 }

@@ -7,8 +7,7 @@ import SearchBar from "@/components/SearchBar/SearchBar";
 import Link from "next/link";
 
 export default function Header({ count }: { count: number | undefined }) {
-	const [headerBackground, setHeaderBackground] =
-		useState<string>("bg-transparent");
+	const [headerBackground, setHeaderBackground] = useState("bg-transparent");
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -33,22 +32,22 @@ export default function Header({ count }: { count: number | undefined }) {
 
 	return (
 		<header
-			className={`px-3 md:px-8 lg:px-16 xl:px-32 2xl:px-48 mb-12 z-20 sticky top-0 inset-x-0 flex w-full items-center justify-center flex-wrap md:flex-nowrap ${headerBackground}`}
+			className={`sticky inset-x-0 top-0 z-20 mb-12 flex w-full flex-wrap items-center justify-center px-3 md:flex-nowrap md:px-8 lg:px-16 xl:px-32 2xl:px-48 ${headerBackground}`}
 		>
-			<div className="basis-full md:basis-1/6 flex md:justify-start justify-center">
-				<p className="w-[120px] h-auto">
+			<div className="flex basis-full justify-center md:basis-1/6 md:justify-start">
+				<p className="h-auto w-[120px]">
 					<Link href="/">
 						<Logo />
 					</Link>
 				</p>
 			</div>
-			<div className="flex-col z-10 relative flex items-center basis-full md:basis-4/6">
+			<div className="relative z-10 flex basis-full flex-col items-center md:basis-4/6">
 				<SearchBar
 					count={count}
 					apiKey={process.env.NEXT_PUBLIC_RAWG_API_KEY ?? ""}
 				/>
 			</div>
-			<div className="md:basis-1/6 md:flex md:justify-end md:mt-0 mt-4 fixed md:relative md:top-0 md:right-0 top-4 right-4">
+			<div className="fixed right-4 top-4 mt-4 md:relative md:right-0 md:top-0 md:mt-0 md:flex md:basis-1/6 md:justify-end">
 				<ThemeSwitcher />
 			</div>
 		</header>
