@@ -1,6 +1,6 @@
 import changeImageUrl from "@/lib/utils/changeImageUrl";
-import singleGameBySlug from "@/components/GamePage/singleGameBySlug";
 import PlatformIcons from "@/components/GamePlatforms/PlatformIconsForGame";
+import singleGameBySlug from "@/components/GamePage/singleGameBySlug";
 import GameGallery, { screenshots } from "@/components/GamePage/GameGallery";
 import gameScreenshotsBySlug from "@/components/GamePage/gameScreenshotsBySlug";
 import GameRequirements, {
