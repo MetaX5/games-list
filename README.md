@@ -1,14 +1,14 @@
 <a name="readme-top"></a>
 # GAMES-LIST
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://games-list-omega.vercel.app/">
     <img src="https://i.imgur.com/EuB5bDl.png" alt="games-list" width="328" height="273">
   </a>
 </div>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
+Live Preview: [https://games-list-omega.vercel.app/](https://games-list-omega.vercel.app/)
 <ul>
   <li><b>Dynamic Game Display</b>: Developed a responsive web application using React and Next.js to present game data from the API, providing an interactive and immersive experience to the users.</li>
   <li><b>Efficient Data Fetching</b>: Implemented efficient data fetching strategies to optimize loading times, resulting in seamless user navigation and reducing data transfer overhead. </li>
